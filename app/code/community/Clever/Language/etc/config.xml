@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+    <modules>
+        <Clever_Language>
+            <version>0.1.0</version>
+        </Clever_Language>
+    </modules>
+    
+    <global>
+        
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <customer_edit_tab_account>Clever_Language_Block_Customer_Edit_Tab_Account</customer_edit_tab_account>
+                </rewrite>
+            </adminhtml>
+            
+            <customer>
+                <rewrite>
+                    <form_edit>Clever_Language_Block_Customer_Form_Edit</form_edit>
+                </rewrite>
+            </customer>
+        </blocks>
+        
+        <models>
+            <clever_language>
+                <class>Clever_Language_Model</class>
+            </clever_language>
+        </models>
+        
+        <helpers>
+            <clever_language>
+                <class>Clever_Language_Helper</class>
+            </clever_language>
+        </helpers>
+        
+        <events>
+            <customer_login>
+                <observers>
+                    <clever_language_model_observer>
+                        <type>singleton</type>
+                        <class>Clever_Language_Model_Observer</class>
+                        <method>selectPreferedLanguage</method>
+                    </clever_language_model_observer>
+                </observers>
+            </customer_login>
+        </events>
+        
+        <resources>
+            <clever_language_setup>
+                <setup>
+                    <module>Clever_Language</module>
+                    <class>Clever_Language_Model_Resource_Setup</class>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </clever_language_setup>
+        </resources>
+        
+    </global>
+    
+</config>
